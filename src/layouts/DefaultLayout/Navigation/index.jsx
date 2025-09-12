@@ -7,8 +7,8 @@ const navItems = [
     label: "Home",
   },
   {
-    to: "/about",
-    label: "About",
+    to: "/new",
+    label: "New",
   },
   {
     to: "/contact",

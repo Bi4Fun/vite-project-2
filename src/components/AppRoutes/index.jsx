@@ -1,17 +1,28 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router";
 import Contact from "../../pages/Contact";
-import About from "../../pages/About";
+import New from "../../pages/New";
+import PostDetail from "../../pages/PostDetail";
 import Home from "../../pages/Home";
-import Navigation from "../../layouts/Navigation";
+import DefaultLayout from "../../layouts/DefaultLayout";
+import SidebarLayout from "../../layouts/SidebarLayout";
+import NotFound from "../../layouts/components/NotFound";
+import ScrollToTop from "../ScrollToTop";
 
 function AppRoutes() {
   return (
     <Router>
-      <Navigation />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route element={<DefaultLayout />}>
+          <Route index path="/" element={<Home />} />
+          <Route path="/new" element={<New />} />
+          <Route path="/new/:id" element={<PostDetail />} />
+        </Route>
+
+        <Route element={<SidebarLayout />}>
+          <Route path="/contact" element={<Contact />} />
+        </Route>
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

@@ -1,0 +1,23 @@
+// Sidebar chung
+.sidebar {
+  background: #4e4747;
+  color: #fff;
+  padding: 1rem;
+  max-width: 200px;
+  height: 100vh;
+  font-size: 1rem;
+}
+
+// Sidebar bên trái
+.sidebarLeft {
+  @extend .sidebar;
+  text-align: left;
+  margin-right: auto;
+}
+
+// Sidebar bên phải
+.sidebarRight {
+  @extend .sidebar;
+  text-align: right;
+  margin-left: auto;
+}

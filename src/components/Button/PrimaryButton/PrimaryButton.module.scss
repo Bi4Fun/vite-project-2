@@ -12,6 +12,8 @@
 
   &:hover:not(.disabled) {
     background: #2684e9;
+    color: white;
+    border: 1.5px solid #2684e9;
   }
 
   &.round {
@@ -19,7 +21,7 @@
   }
 
   &.border {
-    border: 2px solid currentColor;
+    border: 1.5px solid currentColor;
     background: transparent;
   }
   &.small {
