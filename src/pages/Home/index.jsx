@@ -1,12 +1,16 @@
 import style from "./Home.module.scss";
 import PrimaryButton from "../../components/Button/PrimaryButton";
 import SecondaryButton from "../../components/Button/SeconaryButton";
+import Debounce from "../Debounce";
 
 function Home() {
   return (
     <>
       <div className={style.wrapper}>
-        <div className={style.home}>Home page</div>
+        <div className={style.home}>
+          Home page
+          <Debounce />
+        </div>
         <PrimaryButton
           border
           href="https://www.youtube.com/watch?v=W-97uRO42A8&list=RDW-97uRO42A8&start_radio=1"
