@@ -44,3 +44,8 @@ counter2.current += 5}}
 
 5. Debaounce: là khoảng dừng:
    5.1. Ví dụ: việc search sản phẩm thì sẽ không gọi API sau mỗi lần onChange mà sẽ delay khoảng 1s rồi mới gọi API
+
+---------DAY 40----------------------------------------
+
+1. redux: quy trình quản lý state
+2. react-redux: cầu nối giữa React và Redux
