@@ -9,4 +9,9 @@
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
+  cursor: pointer;
+}
+label {
+  margin: 10px 0px;
+  display: flex;
 }
