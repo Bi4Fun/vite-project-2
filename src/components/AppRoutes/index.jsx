@@ -6,11 +6,15 @@ import Home from "../../pages/Home";
 import DefaultLayout from "../../layouts/DefaultLayout";
 import SidebarLayout from "../../layouts/SidebarLayout";
 import NotFound from "../../layouts/components/NotFound";
+import AdminLayout from "../../layouts/AdminLayout";
+import Admin from "../../pages/Admin";
+//Components:
 import ScrollToTop from "../ScrollToTop";
 
 function AppRoutes() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route index path="/" element={<Home />} />
@@ -20,6 +24,10 @@ function AppRoutes() {
 
         <Route element={<SidebarLayout />}>
           <Route path="/contact" element={<Contact />} />
+        </Route>
+
+        <Route element={<AdminLayout />}>
+          <Route index path="/admin" element={<Admin />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />

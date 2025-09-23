@@ -14,6 +14,10 @@ const navItems = [
     to: "/contact",
     label: "Contact",
   },
+  {
+    to: "/admin",
+    label: "Admin",
+  },
 ];
 
 function Navigation() {

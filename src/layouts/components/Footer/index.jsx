@@ -1,9 +1,13 @@
 import styles from "./Footer.module.scss";
-function Footer() {
+
+function Footer({ backgroundColor }) {
   return (
     <header>
-      <h1 className={styles.wrapper}>Footer</h1>
+      <h1 className={styles.wrapper} style={{ backgroundColor }}>
+        Footer
+      </h1>
     </header>
   );
 }
+
 export default Footer;

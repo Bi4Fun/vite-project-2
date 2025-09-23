@@ -11,3 +11,12 @@
 .ulStyle li {
   margin-bottom: 0.5em;
 }
+
+.paginarion {
+  display: inline-block;
+  border: 1px solid #000000;
+  padding: 2px 4px;
+  cursor: pointer;
+  width: 40px;
+  text-align: center;
+}
