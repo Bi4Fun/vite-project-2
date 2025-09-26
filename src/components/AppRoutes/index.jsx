@@ -8,6 +8,7 @@ import SidebarLayout from "../../layouts/SidebarLayout";
 import NotFound from "../../layouts/components/NotFound";
 import AdminLayout from "../../layouts/AdminLayout";
 import Admin from "../../pages/Admin";
+import Redux from "../../pages/Redux";
 //Components:
 import ScrollToTop from "../ScrollToTop";
 
@@ -18,7 +19,7 @@ function AppRoutes() {
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route index path="/" element={<Home />} />
-          <Route path="/new" element={<New />} />
+          <Route path="new" element={<New />} />
           <Route path="/new/:id" element={<PostDetail />} />
         </Route>
 
@@ -30,7 +31,9 @@ function AppRoutes() {
           <Route index path="/admin" element={<Admin />} />
         </Route>
 
+        {/* No layout */}
         <Route path="*" element={<NotFound />} />
+        <Route path="/redux" element={<Redux />} />
       </Routes>
     </Router>
   );
