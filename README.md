@@ -49,3 +49,7 @@ counter2.current += 5}}
 
 1. redux: quy trình quản lý state
 2. react-redux: cầu nối giữa React và Redux
+
+---------DAY 41---------------------------
+
+1. axios: xử dụng XMLhttp request

@@ -9,6 +9,7 @@ import NotFound from "../../layouts/components/NotFound";
 import AdminLayout from "../../layouts/AdminLayout";
 import Admin from "../../pages/Admin";
 import Redux from "../../pages/Redux";
+import ReduxExample2 from "../../pages/Redux/Example2";
 //Components:
 import ScrollToTop from "../ScrollToTop";
 
@@ -34,6 +35,7 @@ function AppRoutes() {
         {/* No layout */}
         <Route path="*" element={<NotFound />} />
         <Route path="/redux" element={<Redux />} />
+        <Route path="/redux-example-2" element={<ReduxExample2 />} />
       </Routes>
     </Router>
   );
