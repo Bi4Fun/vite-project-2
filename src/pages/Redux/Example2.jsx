@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import http, { httpClient } from "../../utils/http";
@@ -8,11 +8,11 @@ import productActions from "../../strore/product/actions";
 import provinceActions from "../../strore/province/actions";
 
 function ReduxExample2() {
+  const [valueSelectedProvince, setValueSelectedProvince] = useState("");
+
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.list);
   const provinces = useSelector((state) => state.province.list);
-  console.log(products);
-  console.log(provinces);
 
   useEffect(() => {
     (async () => {
@@ -28,6 +28,11 @@ function ReduxExample2() {
     })();
   }, [dispatch]);
 
+  const handleProvinceChange = (event) => {
+    const selectedValue = event.target.value;
+    setValueSelectedProvince(selectedValue);
+  };
+
   return (
     <>
       <h1 className={style.wrapper}>Redux Page Example 2</h1>
@@ -38,12 +43,25 @@ function ReduxExample2() {
         ))}
       </ul>
       <br />
-      <div className={style.wrapper}>Provinces:</div>
-      <ul>
-        {provinces.map((province) => (
-          <li key={province.province_id}>{province.name}</li>
-        ))}
-      </ul>
+      <fieldset className={style.lengend}>
+        <legend style={{ fontWeight: "bold", color: "#333" }}>Provinces</legend>
+        <label htmlFor="provinces">Provinces:</label>
+        <select
+          name="provinces"
+          id="province"
+          value={valueSelectedProvince}
+          onChange={handleProvinceChange}
+        >
+          <option value="">-- Select Province --</option>
+          {provinces.map((province) => (
+            <option key={province.province_id} value={province.name}>
+              {/* This line renders the name of each province in the select dropdown */}
+              {province.name}
+            </option>
+          ))}
+        </select>
+        <p>Selected Province: {valueSelectedProvince}</p>
+      </fieldset>
     </>
   );
 }
