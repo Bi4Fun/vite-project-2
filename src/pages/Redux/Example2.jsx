@@ -6,13 +6,16 @@ import http, { httpClient } from "../../utils/http";
 import style from "./Redux.module.scss";
 import productActions from "../../strore/product/actions";
 import provinceActions from "../../strore/province/actions";
+import { getProducts } from "../../strore/product/selectors";
+import { getProvinces } from "../../strore/province/selectors";
 
 function ReduxExample2() {
   const [valueSelectedProvince, setValueSelectedProvince] = useState("");
 
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.product.list);
-  const provinces = useSelector((state) => state.province.list);
+  // Lấy dữ liệu từ Redux store:
+  const products = useSelector(getProducts);
+  const provinces = useSelector(getProvinces);
 
   useEffect(() => {
     (async () => {
