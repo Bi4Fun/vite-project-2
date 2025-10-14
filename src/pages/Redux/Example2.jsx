@@ -51,7 +51,7 @@ function ReduxExample2() {
         <label htmlFor="provinces">Provinces:</label>
         <select
           name="provinces"
-          id="province"
+          id="provinces"
           value={valueSelectedProvince}
           onChange={handleProvinceChange}
         >

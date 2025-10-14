@@ -22,10 +22,10 @@ function New() {
   return (
     <>
       <div className={style.wrapper}>NEWS</div>
-      {pots.map((pot) => (
+      {pots.map((post) => (
         <ul className={style.ulStyle}>
-          <li key={pot.id}>
-            <Link to={`/new/${pot.id}`}>{pot.title}</Link>
+          <li key={post.id}>
+            <Link to={`/new/${post.id}`}>{post.title}</Link>
           </li>
         </ul>
       ))}
@@ -34,7 +34,7 @@ function New() {
         {arrayNews.map((__, index) => (
           <li
             key={index}
-            className={style.paginarion}
+            className={style.pagination}
             style={{
               backgroundColor: page === index + 1 ? "#eba754" : "transparent",
               color: page === index + 1 ? "#ffffff" : "#000000",
