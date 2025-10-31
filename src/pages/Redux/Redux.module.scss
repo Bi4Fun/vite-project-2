@@ -9,3 +9,14 @@
   padding: 15px;
   border-radius: 5px;
 }
+
+select {
+  margin: 8px 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 auto;
+}

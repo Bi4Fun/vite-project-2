@@ -1,0 +1,19 @@
+.card {
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 6px;
+  background: #fff;
+  min-width: 450px;
+  margin: 0 auto;
+}
+.header {
+  margin-bottom: 8px;
+  & p {
+    margin: 4px 0;
+  }
+}
+.body p {
+  display: block;
+  margin: 4px 0;
+  color: #555;
+}

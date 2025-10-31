@@ -35,3 +35,10 @@ const del = async (pathname, config) => {
 const http = { get, post, put, patch, del };
 
 export default http;
+
+/**
+ * Ở file này export 2 httpClient và http
+ * httpClient: dùng khi muốn dùng các phương thức của axios (như lấy header, status,...) (dùng khi trong API không có data vì bản thân axios đã có .data rồi)
+ *
+ * http: dùng khi chỉ cần data từ response (tránh lặp .data.data)
+ */
