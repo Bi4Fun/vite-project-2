@@ -1,0 +1,81 @@
+/* =================================================================
+   1. Bố cục chung của thẻ (Card Group)
+   ================================================================= */
+.container {
+  border: 1px solid black;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* =================================================================
+   2. Tiêu đề (Header)
+   ================================================================= */
+.header {
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  text-transform: uppercase;
+}
+
+/* Dòng này cần phải sử dụng Flexbox để đẩy checkbox về bên phải */
+.checkboxLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+
+  font-size: 1em;
+  height: 20px;
+}
+
+/* Ẩn văn bản 'true'/'false' nếu bạn muốn chỉ hiển thị checkbox tùy chỉnh
+   Nếu bạn muốn giữ lại chữ 'true'/'false', hãy bỏ đoạn CSS này. */
+.checkboxLabel {
+  position: relative;
+}
+
+/* Ẩn checkbox gốc để tạo giao diện tùy chỉnh */
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* =================================================================
+   4. Tạo kiểu dáng Checkbox Tùy chỉnh (Sử dụng ::after trên label)
+   ================================================================= */
+
+.checkboxLabel::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+/* 5. Hiển thị dấu tích khi checkbox được CHECKED */
+.checkbox:checked + .checkboxLabel::after {
+  content: "✓";
+  background-color: transparent;
+  text-align: center;
+  line-height: 20px;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Áp dụng kiểu dáng khi hoàn thành (class .isCompleted được thêm bằng clsx) */
+.isCompleted {
+  border-left: 5px solid #2ecc71;
+}
+
+.isCompleted .header {
+  text-decoration: line-through;
+  color: #777;
+}

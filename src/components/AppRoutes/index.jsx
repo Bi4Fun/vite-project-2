@@ -12,6 +12,7 @@ import Redux from "../../pages/Redux";
 import ReduxExample2 from "../../pages/Redux/Example2";
 //Components:
 import ScrollToTop from "../ScrollToTop";
+import ExampleToDo from "../../pages/Redux/ExampleToDo/ExampleToDo";
 
 function AppRoutes() {
   return (
@@ -36,6 +37,7 @@ function AppRoutes() {
         <Route path="*" element={<NotFound />} />
         <Route path="/redux" element={<Redux />} />
         <Route path="/redux-example-2" element={<ReduxExample2 />} />
+        <Route path="/redux-example-to-do" element={<ExampleToDo />} />
       </Routes>
     </Router>
   );

@@ -2,17 +2,19 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import UserCard from "../../components/UserCard";
 
-import http, { httpClient } from "../../utils/http";
-import httpJSONPlaceholder from "../../utils/httpJSONPlaceholder";
+// import http, { httpClient } from "../../utils/http";
+// import httpJSONPlaceholder from "../../utils/httpJSONPlaceholder";
 
 import style from "./Redux.module.scss";
-import productActions from "../../strore/product/actions";
-import provinceActions from "../../strore/province/actions";
-import userActions from "../../strore/users/actions";
+import productActions from "../../store/product/actions";
+import provinceActions from "../../store/province/actions";
+import usersActions from "../../store/users/actions";
 
-import { getProducts } from "../../strore/product/selectors";
-import { getProvinces } from "../../strore/province/selectors";
-import { getUsers } from "../../strore/users/selectors";
+import { getProducts } from "../../store/product/selectors";
+import { getProvinces } from "../../store/province/selectors";
+import { getUsers } from "../../store/users/selectors";
+import { getProductIsLoading } from "../../store/product/selectors";
+import { getUsersIsLoading } from "../../store/users/selectors";
 
 function ReduxExample2() {
   const [valueSelectedProvince, setValueSelectedProvince] = useState("");
@@ -22,28 +24,22 @@ function ReduxExample2() {
   const products = useSelector(getProducts);
   const provinces = useSelector(getProvinces);
   const users = useSelector(getUsers);
+  const isProductLoading = useSelector(getProductIsLoading);
+  const isUsersLoading = useSelector(getUsersIsLoading);
 
+  // get data của products từ store:
   useEffect(() => {
-    (async () => {
-      // const httpProuctResponse = await http.get("/products");
-      const httpProuctResponse = await http.get("/products");
-      dispatch(productActions.setList(httpProuctResponse.data.items));
-      // dispatch(productActions.setList(httpProuctResponse.data.items));
-    })();
+    dispatch(productActions.getList());
   }, [dispatch]);
 
+  // get data của provinces từ store:
   useEffect(() => {
-    (async () => {
-      const httpProvinceResponse = await http.get("/address/provinces");
-      dispatch(provinceActions.setList(httpProvinceResponse.data));
-    })();
+    dispatch(provinceActions.getList());
   }, [dispatch]);
 
+  // get data của users từ store:
   useEffect(() => {
-    (async () => {
-      const httpUsersResponse = await httpJSONPlaceholder.get("/users");
-      dispatch(userActions.setList(httpUsersResponse));
-    })();
+    dispatch(usersActions.getList());
   }, [dispatch]);
 
   const handleProvinceChange = (event) => {
@@ -55,11 +51,15 @@ function ReduxExample2() {
     <>
       <h1 className={style.wrapper}>Redux Page Example 2</h1>
       <div className={style.wrapper}>Products:</div>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>{product.title}</li>
-        ))}
-      </ul>
+      {isProductLoading ? (
+        <div>Loading products...</div>
+      ) : (
+        <ul>
+          {products.map((product) => (
+            <li key={product.id}>{product.title}</li>
+          ))}
+        </ul>
+      )}
       <br />
       <fieldset className={style.lengend}>
         <legend style={{ fontWeight: "bold", color: "#333" }}>Provinces</legend>
@@ -82,7 +82,9 @@ function ReduxExample2() {
       </fieldset>
       <br />
       <div className={style.wrapper}>Users:</div>
-      {users && (
+      {isUsersLoading ? (
+        <div>Loading users...</div>
+      ) : (
         <div className={style.container}>
           {users.map((user) => (
             <UserCard key={user.id} user={user} />

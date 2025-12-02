@@ -1,4 +1,4 @@
-import { SET_LIST } from "./constants";
+import { SET_LIST, GET_LIST } from "./constants";
 
 const initState = {
   list: [],
@@ -6,6 +6,8 @@ const initState = {
 
 const reducer = (state = initState, action) => {
   switch (action.type) {
+    case GET_LIST:
+      return { ...state };
     case SET_LIST:
       return { ...state, list: action.payload };
     default:
