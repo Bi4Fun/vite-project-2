@@ -24,7 +24,7 @@ function ExampleToDo() {
       {isLoading ? (
         <div>Loading todos...</div>
       ) : (
-        <div>
+        <div className={styles.wrapper}>
           {todos.map((todo) => (
             <TodoCard key={todo.id} todo={todo} />
           ))}
