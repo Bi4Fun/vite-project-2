@@ -60,7 +60,7 @@
 }
 
 /* 5. Hiển thị dấu tích khi checkbox được CHECKED */
-.checkbox:checked + .checkboxLabel::after {
+.isCompleted .checkboxLabel::after {
   content: "✓";
   background-color: transparent;
   text-align: center;

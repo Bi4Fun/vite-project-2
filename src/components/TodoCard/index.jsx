@@ -4,7 +4,7 @@ import styles from "./TodoCard.module.scss";
 import clsx from "clsx";
 
 function TodoCard({ todo }) {
-  const [completed, setCompleted] = useState(todo.completed);
+  const [completed, setCompleted] = useState(() => todo?.completed ?? false);
 
   const handleCheckboxChange = (event) => {
     setCompleted(event.target.checked);
@@ -19,9 +19,6 @@ function TodoCard({ todo }) {
         })}
       >
         <header className={styles.header}>{todo.title}</header>
-        <label htmlFor={todo.id} className={styles.checkboxLabel}>
-          {completed ? "done" : "not yet"}
-        </label>
         <input
           id={todo.id}
           type="checkbox"
@@ -29,6 +26,9 @@ function TodoCard({ todo }) {
           onChange={handleCheckboxChange}
           checked={completed}
         />
+        <label htmlFor={todo.id} className={styles.checkboxLabel}>
+          {completed ? "done" : "not yet"}
+        </label>
       </div>
     </div>
   );
