@@ -1,7 +1,11 @@
 import style from "./Home.module.scss";
 import PrimaryButton from "../../components/Button/PrimaryButton";
-import SecondaryButton from "../../components/Button/SeconaryButton";
+import SecondaryButton from "../../components/Button/SecondaryButton";
+import CommonButton from "../../components/Button/CommonButton";
 import Debounce from "../Debounce";
+
+console.log(import.meta.env.VITE_APP_API_BASE_URL);
+console.log(import.meta.env);
 
 function Home() {
   return (
@@ -20,6 +24,9 @@ function Home() {
         <SecondaryButton disabled size="medium">
           Secondary Button
         </SecondaryButton>
+        <CommonButton border bgColor="#8fecb3ff" textColor="#fff" size="large">
+          Common Button
+        </CommonButton>
       </div>
     </>
   );
