@@ -1,0 +1,39 @@
+.photoCard {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px;
+  max-width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.image {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.info {
+  .title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    color: #333;
+  }
+
+  .id,
+  .albumId {
+    font-size: 12px;
+    color: #666;
+    margin: 4px 0;
+  }
+}

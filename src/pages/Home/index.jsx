@@ -4,9 +4,6 @@ import SecondaryButton from "../../components/Button/SecondaryButton";
 import CommonButton from "../../components/Button/CommonButton";
 import Debounce from "../Debounce";
 
-console.log(import.meta.env.VITE_APP_API_BASE_URL);
-console.log(import.meta.env);
-
 function Home() {
   return (
     <>
