@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router";
+import { useSelector } from "react-redux";
 import Contact from "../../pages/Contact";
 import New from "../../pages/New";
 import PostDetail from "../../pages/PostDetail";
@@ -13,11 +14,17 @@ import ReduxExample2 from "../../pages/Redux/Example2";
 //Components:
 import ScrollToTop from "../ScrollToTop";
 import ExampleToDo from "../../pages/Redux/ExampleToDo/ExampleToDo";
+import Loading from "../Loading";
+
+//selector từ store:
+import { showLoading } from "../../store/loading/selectors";
 
 function AppRoutes() {
+  const isLoading = useSelector(showLoading);
   return (
     <Router>
       <ScrollToTop />
+      {isLoading && <Loading />}
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route index path="/" element={<Home />} />

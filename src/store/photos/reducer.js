@@ -2,7 +2,6 @@ import { SET_LIST, GET_LIST } from "./constants";
 
 const initialState = {
   list: [],
-  isLoading: false,
 };
 
 const photosReducer = (state = initialState, action) => {
@@ -10,13 +9,11 @@ const photosReducer = (state = initialState, action) => {
     case GET_LIST:
       return {
         ...state,
-        isLoading: true,
       };
     case SET_LIST:
       return {
         ...state,
         list: action.payload,
-        isLoading: false,
       };
     default:
       return state;

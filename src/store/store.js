@@ -10,6 +10,7 @@ import provinceReducer from "./province/reducer";
 import usersReducer from "./users/reducer";
 import todosReducer from "./todo/reducer";
 import photosReducer from "./photos/reducer";
+import loadingReducer from "./loading/reducer";
 
 const rootReducer = combineReducers({
   product: productReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   users: usersReducer,
   todo: todosReducer,
   photos: photosReducer,
+  loading: loadingReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

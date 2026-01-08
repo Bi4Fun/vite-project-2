@@ -18,11 +18,10 @@ import { getUsers } from "../../store/users/selectors";
 import { getPhotos } from "../../store/photos/selectors";
 import { getProductIsLoading } from "../../store/product/selectors";
 import { getUsersIsLoading } from "../../store/users/selectors";
-import { getPhotosIsLoading } from "../../store/photos/selectors";
 
 function ReduxExample2() {
   const [valueSelectedProvince, setValueSelectedProvince] = useState("");
-  const [photoLimit, setPhotoLimit] = useState(13);
+  const [photoLimit, setPhotoLimit] = useState(0);
 
   const dispatch = useDispatch();
   // Lấy dữ liệu từ Redux store:
@@ -32,7 +31,6 @@ function ReduxExample2() {
   const photos = useSelector(getPhotos);
   const isProductLoading = useSelector(getProductIsLoading);
   const isUsersLoading = useSelector(getUsersIsLoading);
-  const isPhotosLoading = useSelector(getPhotosIsLoading);
 
   // get data của products từ store:
   useEffect(() => {
@@ -54,9 +52,16 @@ function ReduxExample2() {
     dispatch(photosActions.getList(photoLimit));
   }, [dispatch, photoLimit]);
 
+  // handle province change
   const handleProvinceChange = (event) => {
-    const selectedValue = event.target.value;
-    setValueSelectedProvince(selectedValue);
+    const selectedProvincesValue = event.target.value;
+    setValueSelectedProvince(selectedProvincesValue);
+  };
+
+  // handle photo limit change
+  const handlePhotoLimitChange = (event) => {
+    const selectedPhotoValue = event.target.value;
+    setPhotoLimit(selectedPhotoValue);
   };
 
   return (
@@ -75,7 +80,7 @@ function ReduxExample2() {
       )}
       <br />
       {/* Provinces */}
-      <fieldset className={style.lengend}>
+      <fieldset className={style.legend}>
         <legend style={{ fontWeight: "bold", color: "#333" }}>Provinces</legend>
         <label htmlFor="provinces">Provinces:</label>
         <select
@@ -110,28 +115,26 @@ function ReduxExample2() {
       {/* Photos */}
       <div className={style.wrapper}>Photos:</div>
       <div style={{ marginBottom: "8px" }}>
-        <label htmlFor="photoLimit">Số lượng ảnh hiển thị: </label>
+        <label htmlFor="photoLimit">表示する写真の数: </label>
         <select
           id="photoLimit"
           value={photoLimit}
-          onChange={(e) => setPhotoLimit(Number(e.target.value))}
+          onChange={handlePhotoLimitChange}
           style={{ marginLeft: "8px", padding: "4px 8px" }}
         >
+          <option value="">-- Select Photo Limit --</option>
           <option value={5}>5</option>
           <option value={10}>10</option>
           <option value={20}>20</option>
           <option value={50}>50</option>
         </select>
       </div>
-      {isPhotosLoading ? (
-        <div>Loading photos...</div>
-      ) : (
-        <div className={style.container}>
-          {photos.map((photo) => (
-            <PhotoCard key={photo.id} photo={photo} />
-          ))}
-        </div>
-      )}
+
+      <div className={style.container}>
+        {photos.map((photo) => (
+          <PhotoCard key={photo.id} photo={photo} />
+        ))}
+      </div>
     </>
   );
 }
