@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export const httpClient = axios.create({
-  //   baseURL: "https://jsonplaceholder.typicode.com",
-  baseURL: "https://api01.f8team.dev/api",
+  baseURL: import.meta.env.VITE_APP_API_BASE_URL,
 });
 
 //ghi đè phương thức rồi .data của axios để tránh code: respone.data.data

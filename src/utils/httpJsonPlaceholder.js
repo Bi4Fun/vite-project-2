@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Client dành cho API khác (ví dụ baseURL khác)
 export const httpJsonPlaceholderClient = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com",
+  baseURL: import.meta.env.VITE_APP_API_BASE_URL_JSON_PLACEHOLDER,
 });
 
 const get = async (pathname, config) => {
